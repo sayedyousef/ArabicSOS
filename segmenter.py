@@ -21,7 +21,9 @@ feature_codes_1 = ['minus5', 'minus4', 'minus3', 'minus2', 'minus1', 'focus',
 
 def segment(infile, outfile):
     model = CatBoostClassifier()
+    print ("before laod model")
     model.load_model("models/catboost_1.model")
+    print ("after laod model")
     ff = extract_features(infile, feature_codes_1, return_style='dataframe')
     X = ff[['chr_position'] + feature_codes_1]
     y = model.predict(X)
